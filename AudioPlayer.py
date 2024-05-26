@@ -17,12 +17,29 @@ class AudioPlayer:
     def position(self) -> float:
         return self.player.get_position()
     
+    def duration(self) -> float:
+        return self.player.get_length() / 1000.0
+    
+    def volume(self) -> float:
+        return self.player.audio_get_volume()
+    
+    def next(self) -> float:
+        return self.player.next()
+    
+    def prev(self) -> float:
+        return self.player.previous()
+    
+    def stop(self) -> float:
+        return self.player.stop()
+    
+    def set_volume(self, volume):
+        return self.player.audio_set_volume(volume)
+    
     def is_playing(self) -> bool:
         return self.player.is_playing()
     
     def playUrl(self, url):
         self.player.set_mrl(url)
-        self.player.audio_set_volume(100)
         self.player.set_position(0)
         self.player.play()
 
